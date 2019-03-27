@@ -1,0 +1,32 @@
+version: 2
+
+jobs:
+  build_test_deploy:
+    docker:
+      - image: circleci/node:10.15.2
+    environment:
+      TZ: "/usr/share/zoneinfo/Australia/Melbourne"
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependency-cache-{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache:
+          key: v1-dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run: npm test
+      - run: npm run build
+      - add_ssh_keys:
+          fingerprints:
+            - "1d:7c:9a:22:64:53:45:83:1d:57:1e:ad:a3:f9:47:a2"
+      - run: npm run deploy
+
+workflows:
+  version: 2
+  build_test_deploy:
+      jobs:
+        - build_test_deploy:
+            filters:
+              branches:
+                ignore: gh-pages
