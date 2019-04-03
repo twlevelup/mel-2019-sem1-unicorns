@@ -17,6 +17,7 @@ it('should contain team members names', () => {
       const page = new TeamPage();
       expect(page.render()).toContain("Wina");
       expect(page.render()).toContain("Lindsay");
+      expect(page.render()).toContain("Kishan");
     });
  });
 });
