@@ -101,4 +101,19 @@ describe('HomePage', () => {
       expect(page.updateTimeDisplay).toHaveBeenCalledTimes(3);
     });
   });
+
+  describe('#faceButtonEvent', () => {
+    it('should take the user to the demo page', () => {
+      const props = {
+        navigate: () => { },
+      };
+
+      const page = new HomePage(props);
+      spyOn(page, 'navigate');
+
+      page.faceButtonEvent();
+      expect(page.navigate).toHaveBeenCalledWith('demo');
+
+    });
+  });
 });

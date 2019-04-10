@@ -173,5 +173,3 @@ module.exports = class App {
     this.render(this.watchFace, Page, props);
   }
 };
-
-//test
