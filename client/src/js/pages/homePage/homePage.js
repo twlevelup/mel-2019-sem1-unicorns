@@ -4,9 +4,16 @@ const AudioHub = require('watch-framework').AudioHub;
 const logo = require('../../../images/logo.png');
 const plop = './sounds/plop.mp3';
 
+
+
+
+
+
 //test for raspberrypi
 class HomePage extends BasePage {
   template = require('./homePage.hbs');
+
+
 
   pageWillLoad() {
     StorageHub.setData('contacts', [
@@ -15,17 +22,48 @@ class HomePage extends BasePage {
       { name: 'Jafari', phoneNumber: '0431 333 333' },
     ])
 
+ var remainders = [
+   {title: "Take Medicine", Time: "08:06:00 pm"},
+   {title: "Drink Water", Time: "08:30:00 pm"}
+];
+
+ const currentDateTime =this.getDateTime();
+ const  currentTime = currentDateTime.time;
+
+console.log(currentTime);
+
     this.updateTimeEverySecond();
     const dateTime = this.getDateTime();
     this.date = dateTime.date;
     this.time = dateTime.time;
     this.logo = logo;
+
+const currentTimeNow = "08:06:00 pm";
+
+     for( var i = 0; i < remainders.length; i++) {
+
+      if (remainders[i].Time == currentTimeNow){
+
+      console.log("Correct Time");
+      console.log(remainders[i].title);
+
+    }
+
+    else {
+    console.log("Hello World");
+      }
   }
+  }
+
+
+
+
+
 
   getDateTime() {
     const dateTime = new Date(Date.now()).toLocaleString('en-AU').split(",");
-    return { 
-      date: dateTime[0], 
+    return {
+      date: dateTime[0],
       time: dateTime[1],
     };
   }
@@ -39,6 +77,10 @@ class HomePage extends BasePage {
     if (clockTime) {
       clockTime.textContent = getTime().time;
     }
+  }
+
+  faceButtonEvent() {
+    this.navigate('demo');
   }
 
   rightButtonEvent() {

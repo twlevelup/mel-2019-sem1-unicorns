@@ -7,5 +7,6 @@ module.exports = {
   '/': HomePage,
   'contacts': ContactsPage,
   'team': TeamPage,
-  '404': FourOhFour,
+  '404': FourOhFour
 };
+
