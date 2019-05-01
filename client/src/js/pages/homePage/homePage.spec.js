@@ -18,13 +18,6 @@ describe('HomePage', () => {
     })
   })
 
-  describe('#render', () => {
-    it('should render my page correctly', () => {
-      const page = new HomePage();
-      expect(page.render()).toContain("<div>Hello, World!</div>");
-    });
-  });
-
   describe('#leftButtonEvent', () => {
     it('audioHub plays a sound', () => {
       spyOn(AudioHub, 'playSound')
@@ -88,17 +81,17 @@ describe('HomePage', () => {
     });
   });
 
-  describe('#updateTimeEverySecond', () => {
-    it('update time display gets called three times in 3000 ms', () => {
+  describe('#updateTimeEveryMinute', () => {
+    it('update time display gets called one time in 60 s', () => {
       const page = new HomePage();
 
       spyOn(page, 'updateTimeDisplay');
 
       jest.useFakeTimers();
-      page.updateTimeEverySecond();
-      jest.runTimersToTime(3000);
+      page.updateTimeEveryMinute();
+      jest.runTimersToTime(60000);
 
-      expect(page.updateTimeDisplay).toHaveBeenCalledTimes(3);
+      expect(page.updateTimeDisplay).toHaveBeenCalledTimes(1);
     });
   });
 
