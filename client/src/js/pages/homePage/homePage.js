@@ -16,16 +16,20 @@ class HomePage extends BasePage {
 
 
   pageWillLoad() {
+
     StorageHub.setData('contacts', [
       { name: 'Ray', phoneNumber: '0431 111 111' },
       { name: 'Sinan', phoneNumber: '0431 222 222' },
       { name: 'Jafari', phoneNumber: '0431 333 333' },
     ])
 
- var remainders = [
-   {title: "Take Medicine", Time: "08:06:00 pm"},
-   {title: "Drink Water", Time: "08:30:00 pm"}
-];
+    StorageHub.setData('reminders', [
+      {title: "Take Medicine", time: "08:06:00 pm"},
+      {title: "Drink Water", time: "08:30:00 pm"},
+      {title: "Walk Dog", time:"09:00:00 am" },
+    ])
+
+
 
  const currentDateTime =this.getDateTime();
  const  currentTime = currentDateTime.time;
@@ -38,21 +42,7 @@ console.log(currentTime);
     this.time = dateTime.time;
     this.logo = logo;
 
-const currentTimeNow = "08:06:00 pm";
 
-     for( var i = 0; i < remainders.length; i++) {
-
-      if (remainders[i].Time == currentTimeNow){
-
-      console.log("Correct Time");
-      console.log(remainders[i].title);
-
-    }
-
-    else {
-    console.log("Hello World");
-      }
-  }
   }
 
 

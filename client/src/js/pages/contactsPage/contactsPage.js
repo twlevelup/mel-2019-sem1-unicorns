@@ -5,7 +5,10 @@ class ContactsPage extends BasePage {
   template = require('./contactsPage.hbs');
 
   pageWillLoad() {
-    this.contacts = StorageHub.getData('contacts')
+    this.contacts = StorageHub.getData('reminders')
+    this.reminders =StorageHub.getData('reminders');
+
+    console.log(StorageHub.getData('reminders'))
   }
 
   leftButtonEvent() {
@@ -14,3 +17,4 @@ class ContactsPage extends BasePage {
 }
 
 module.exports = ContactsPage;
+
