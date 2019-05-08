@@ -96,7 +96,7 @@ describe('HomePage', () => {
   });
 
   describe('#faceButtonEvent', () => {
-    it('should take the user to the demo page', () => {
+    it('should take the user to the activity page', () => {
       const props = {
         navigate: () => { },
       };
@@ -105,7 +105,7 @@ describe('HomePage', () => {
       spyOn(page, 'navigate');
 
       page.faceButtonEvent();
-      expect(page.navigate).toHaveBeenCalledWith('activityDetails');
+      expect(page.navigate).toHaveBeenCalledWith('activity');
 
     });
   });
