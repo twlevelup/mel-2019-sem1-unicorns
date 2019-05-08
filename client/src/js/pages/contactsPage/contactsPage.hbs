@@ -1,10 +1,8 @@
-<h1>Contacts</h1>
+<h1>Activities</h1>
 <ul>
-  {{#each contacts}}
     <li>
-      <span>Name: {{this.name}}</span>
+      <span>{{activity.activity}}</span>
       <br/>
-      <span>Phone: {{this.phoneNumber}}</span>
+      {{!-- <span>{{activity.time.toDateString()}}</span> --}}
     </li>
-  {{/each}}
 </ul>
