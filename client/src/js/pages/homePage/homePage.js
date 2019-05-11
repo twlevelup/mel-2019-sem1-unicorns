@@ -10,9 +10,14 @@ class HomePage extends BasePage {
 
   pageWillLoad() {
     StorageHub.setData('contacts', [
-      { name: 'Ray', phoneNumber: '0431 111 111' },
-      { name: 'Sinan', phoneNumber: '0431 222 222' },
-      { name: 'Jafari', phoneNumber: '0431 333 333' },
+      {
+        activity: "walk dog",
+        time: new Date('2019-05-09T15:00:00')
+      },
+      {
+        activity: "feed dog",
+        time: new Date('2019-05-09T16:00:00')
+      },
     ])
 
     this.updateTimeEveryMinute();
@@ -25,14 +30,14 @@ class HomePage extends BasePage {
   getDateTime() {
     const dateTime = new Date(Date.now()).toLocaleString('en-AU').split(",");
     const timeArray = dateTime[1].split(":");
-    const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-    var getMonth = MONTHS[parseInt(dateTime[0].split("/")[1])-1];
+    const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var getMonth = MONTHS[parseInt(dateTime[0].split("/")[1]) - 1];
     const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var getDay = DAYS[new Date().getDay()].slice(0,3);
+    var getDay = DAYS[new Date().getDay()].slice(0, 3);
 
     return {
       date: getDay + ", " + dateTime[0].split("/")[0] + " " + getMonth,
-      time: timeArray[0]+":"+timeArray[1] + " " + timeArray[2].split(" ")[1]
+      time: timeArray[0] + ":" + timeArray[1] + " " + timeArray[2].split(" ")[1]
     };
   }
 

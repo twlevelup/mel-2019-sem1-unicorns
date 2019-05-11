@@ -1,5 +1,6 @@
 const ContactsPage = require('./contactsPage');
 const StorageHub = require('watch-framework').StorageHub;
+const activities = require('./../data');
 
 describe('ContactsPage', () => {
   let watchFace;
@@ -11,13 +12,16 @@ describe('ContactsPage', () => {
   describe('#render', () => {
     it('should render my specific contacts', () => {
       const contacts = [
-        { name: 'hi', phoneNumber: '1234' },
+        {
+          activity: "walk dog",
+          time: new Date('2019-05-09T15:00:00')
+        },
       ];
       StorageHub.setData('contacts', contacts)
       const page = new ContactsPage();
       page.pageWillLoad();
-      expect(page.render()).toContain("<span>Name: hi</span>");
-      expect(page.render()).toContain("<span>Phone: 1234</span>");
+      expect(page.render()).toContain("<span>{{contacts[0].activity}}</span>");
+      expect(page.render()).toContain("<span>{{contacts[0].time.toDateString()}}</span>");
     });
   });
 
